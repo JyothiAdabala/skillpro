@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:login/screens/login.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'screens/login.dart';
 
 void main() async {
+  //Initialize the firebase before running the application.
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  
   runApp(MaterialApp(
     home: LoginWidget(),
   ));

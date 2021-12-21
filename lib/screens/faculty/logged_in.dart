@@ -1,20 +1,24 @@
+// This file will run after the successful login of the faculty
+// It contains three main widgets, they are 1.Profile 2. Dashboard 3.To-Do
+
 import 'package:flutter/material.dart';
-import 'package:login/colors.dart';
+import 'package:login/styling.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login/screens/login_controller.dart';
 import 'package:get/get.dart';
-import 'package:login/screens/faculty/dashboard.dart';
-import 'package:login/screens/faculty/to_do.dart';
-import 'package:login/screens/faculty/profile.dart';
+import 'dashboard.dart';
+import 'profile.dart';
+import 'to_do.dart';
 
-class buildProfile extends StatefulWidget {
-  const buildProfile({Key? key}) : super(key: key);
+
+class facultyLoggedIn extends StatefulWidget {
+  const facultyLoggedIn({Key? key}) : super(key: key);
 
   @override
-  _buildProfileState createState() => _buildProfileState();
+  _facultyLoggedInState createState() => _facultyLoggedInState();
 }
 
-class _buildProfileState extends State<buildProfile> {
+class _facultyLoggedInState extends State<facultyLoggedIn> {
   int currentIndex = 1;
   final tabs = [
     facultyProfile(),
@@ -43,7 +47,8 @@ class _buildProfileState extends State<buildProfile> {
               icon: Icon(Icons.logout)),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar( 
+        showUnselectedLabels: true,
         currentIndex: currentIndex,
         onTap: (index) => setState(() {
           currentIndex = index;
@@ -51,7 +56,7 @@ class _buildProfileState extends State<buildProfile> {
         type: BottomNavigationBarType.shifting,
         unselectedItemColor: Colors.blueGrey,
         items: [
-          BottomNavigationBarItem(
+          BottomNavigationBarItem(  
             icon: Icon(Icons.person_rounded),
             label: 'Profile',
             backgroundColor: primaryColor,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login/colors.dart';
+import 'package:login/styling.dart';
 
 class facultyProfile extends StatefulWidget {
   const facultyProfile({

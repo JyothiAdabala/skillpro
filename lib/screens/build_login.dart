@@ -1,10 +1,14 @@
+// Creates the login Page
+// This page is common for any type of User
+// This is initialized whenever user open the application
+
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login/screens/login_controller.dart';
+import 'login_controller.dart';
 import 'package:sign_button/sign_button.dart';
-import 'package:login/colors.dart';
+import 'package:login/styling.dart';
 import 'package:get/get.dart';
-
 
 final controller = Get.put(LoginController());
 
@@ -17,8 +21,6 @@ class buildLogin extends StatefulWidget {
 
 class _buildLoginState extends State<buildLogin> {
   @override
-  
-
   bool _isHidden = true;
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -29,9 +31,9 @@ class _buildLoginState extends State<buildLogin> {
           title: Text(
             "WELCOME",
             style: GoogleFonts.baloo(
-              letterSpacing: 5,
-              fontSize: 30,
-            ),
+                letterSpacing: 5,
+                fontSize: 30,
+              ),
           ),
           centerTitle: true,
         ),
@@ -51,6 +53,7 @@ class _buildLoginState extends State<buildLogin> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
                 child: TextFormField(
+                  style: GoogleFonts.poppins(color: Colors.white),
                   cursorColor: Colors.white,
                   keyboardType: TextInputType.emailAddress,
                   textAlign: TextAlign.left,
@@ -59,7 +62,7 @@ class _buildLoginState extends State<buildLogin> {
                     fillColor: primaryColor,
                     filled: true,
                     hintText: "Enter Email",
-                    hintStyle: TextStyle(color: Colors.white),
+                    hintStyle: GoogleFonts.poppins(color: Colors.white),
                     prefixIcon: Icon(
                       Icons.account_circle,
                       color: Colors.white,
@@ -73,6 +76,7 @@ class _buildLoginState extends State<buildLogin> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
                 child: TextFormField(
+                  style: GoogleFonts.poppins(color: Colors.white),
                   obscureText: _isHidden,
                   cursorColor: Colors.white,
                   keyboardType: TextInputType.visiblePassword,
@@ -81,13 +85,13 @@ class _buildLoginState extends State<buildLogin> {
                     fillColor: primaryColor,
                     filled: true,
                     hintText: "Enter Password",
-                    hintStyle: TextStyle(color: Colors.white),
+                    hintStyle: GoogleFonts.poppins(color: Colors.white),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                       borderSide: new BorderSide(color: primaryColor),
                     ),
                     prefixIcon: Icon(
-                      Icons.lock,
+                      Icons.lock_rounded,
                       color: Colors.white,
                     ),
                     suffixIcon: IconButton(
@@ -112,10 +116,7 @@ class _buildLoginState extends State<buildLogin> {
                       onPressed: () {},
                       child: Text(
                         "FORGOT PASSWORD?",
-                        style: TextStyle(
-                          color: primaryColor,
-                          decoration: TextDecoration.underline,
-                        ),
+                        style: GoogleFonts.poppins(color: primaryColor,fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -128,21 +129,22 @@ class _buildLoginState extends State<buildLogin> {
                   child: Text(
                     "LOGIN",
                     style: GoogleFonts.baloo(
-                      letterSpacing: 5,
-                      fontSize: 30,
-                    ),
+                        letterSpacing: 5,
+                        fontSize: 30,
+                      ),
                   ),
                   style: ElevatedButton.styleFrom(
+                    elevation: 20,
                     shadowColor: Colors.black,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
-                    primary: primaryColor,
+                    primary: secondaryColor,
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 2.5, 0, 2.5),
+                padding: const EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
                 child: Row(
                   children: <Widget>[
                     Expanded(
@@ -154,7 +156,7 @@ class _buildLoginState extends State<buildLogin> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: Text(
-                        "Or sign Up With",
+                        "Or Sign Up With",
                         style: GoogleFonts.baloo(),
                       ),
                     ),
@@ -171,6 +173,7 @@ class _buildLoginState extends State<buildLogin> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   SignInButton.mini(
+                    elevation: 15,
                     buttonType: ButtonType.google,
                     onPressed: () {
                       controller.login();
